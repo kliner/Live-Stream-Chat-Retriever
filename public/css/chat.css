@@ -29,18 +29,18 @@ body {
 
 .chat-line .message {
     word-wrap: break-word;
-    color:#fff;
+    color:#222;
     font-weight:700;
     line-height:21px;
-    text-shadow:0 0 1px #666,1px 1px 0 #000;
+    /* text-shadow:0 0 1px #666,1px 1px 0 #000; */
 }
 
 .chat-line .author{
-    text-transform:capitalize;
+    /* text-transform:capitalize; */
     color:#000;
     font-weight:700;
     line-height:21px;
-    text-shadow:0 0 1px #666,1px 1px 0 #000;
+    /* text-shadow:0 0 1px #666,1px 1px 0 #000; */
     display: inline-block;
 }
 

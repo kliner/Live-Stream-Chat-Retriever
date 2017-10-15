@@ -6,6 +6,9 @@
         "::1"
     ],
     "live_data": {
+        "bilibili": {
+            "enabled": true
+        },
         "youtube": {
             "enabled": true,
             "client_id": "MY_CLIENT_ID",

@@ -36,6 +36,7 @@ var twitchApi = require('./api/twitch-api');
 var hitboxApi = require('./api/hitbox-api');
 var beamApi = require('./api/beam-api');
 var dailymotionApi = require('./api/dailymotion-api');
+var biliApi = require('./api/bili-api');
 
 var chatMessageId = 0;
 var chatMessages = [];
@@ -58,6 +59,9 @@ function run(config) {
 
     if (config.live_data.dailymotion.enabled)
         dailymotionApi.initialize(config);
+
+    if (config.live_data.bilibili.enabled)
+        biliApi.initialize(config);
 
     var app = express();
     app.use(express.static('public'));
@@ -101,6 +105,12 @@ function run(config) {
     var newMessages = [];
     async.forever(
         function(next) {
+
+            if (config.live_data.bilibili.enabled) {
+                biliApi.getNewMessages().forEach(function(elt) { 
+                    newMessages.push(elt); 
+                });
+            }
 
             if (config.live_data.youtube.enabled) {
                 youtubeApi.getNewMessages().forEach(function(elt) { 
