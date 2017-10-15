@@ -223,7 +223,7 @@ Chat = {
               // Add new pending messages
               var newLines = Chat.vars.queue.join('');
               Chat.vars.queue = [];
-              $('#chat-box').append(newLines);
+              $('#chat-box').prepend(newLines);
 
               // If the max height has been reached, we clean all messages
               var totalHeight = Chat.vars.maxHeight;
@@ -280,7 +280,7 @@ Chat = {
       }, 250),
       displayTime: getParameterByName('display_time') || 300,
       maxMessages: getParameterByName('max_messages') || 100,
-      maxHeight: getParameterByName('max_height') || 800
+      maxHeight: getParameterByName('max_height') || 8000
   }
 };
 

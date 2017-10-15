@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow: scroll;
     margin: 5px;
 }
 
@@ -11,7 +11,7 @@ body {
     font-variant: normal;
     font-weight: normal;
     position: absolute;
-    overflow: hidden;
+    overflow: scroll;
     color: #D3D3D3;
     border-radius: 4px;
     width: calc(100% - 10px);
