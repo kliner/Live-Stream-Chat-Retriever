@@ -44,6 +44,14 @@ System = {
     var value = message[1];
 
     switch (data.source) {
+      case 'bili':
+        switch(type) {
+          case 'ready':
+            console.log('bili API is ready');
+            $('#bili-status').addClass('ready');
+            break;
+        }
+        break;
       case 'youtube':
         var youtubeStatus = $('#youtube-status');
         
@@ -271,8 +279,8 @@ Chat = {
           }
       }, 250),
       displayTime: getParameterByName('display_time') || 60,
-      maxMessages: getParameterByName('max_messages') || 10,
-      maxHeight: getParameterByName('max_height') || 500
+      maxMessages: getParameterByName('max_messages') || 20,
+      maxHeight: getParameterByName('max_height') || 800
   }
 };
 

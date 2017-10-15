@@ -4,6 +4,7 @@
   "description": "Retrieve live streams chat messages from different sources (Twitch, YouTube Gaming, etc...)",
   "author": "Noxalus",
   "dependencies": {
+    "amqplib": "^0.5.1",
     "async": "^2.0.0-rc.1",
     "beam-client-node": "^0.7.1",
     "eventsource": "^0.2.1",

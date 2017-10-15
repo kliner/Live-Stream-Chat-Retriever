@@ -34,3 +34,6 @@ node_modules
 
 config.json
 .credentials
+
+*.sw?
+.DS_Store
