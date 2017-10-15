@@ -278,8 +278,8 @@ Chat = {
               }
           }
       }, 250),
-      displayTime: getParameterByName('display_time') || 60,
-      maxMessages: getParameterByName('max_messages') || 20,
+      displayTime: getParameterByName('display_time') || 300,
+      maxMessages: getParameterByName('max_messages') || 100,
       maxHeight: getParameterByName('max_height') || 800
   }
 };
