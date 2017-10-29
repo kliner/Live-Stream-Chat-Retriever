@@ -260,18 +260,19 @@ Chat = {
                   var linesToDelete = $('#chat-box .chat-line').length - Chat.vars.maxMessages;
 
                   if(linesToDelete > 0) {
-                      for(var i=0; i<linesToDelete; i++) {
-                          $('#chat-box .chat-line').eq(0).remove();
+                      for(var i=linesToDelete-1; i>=0; i--) {
+                          $('#chat-box .chat-line').eq(Chat.vars.maxMessages+i).remove();
                       }
                   }
               }
           } else {
               // Fade out messages that are shown during too long
               if (Chat.vars.displayTime > 0) {
-                  var messagePosted = $('#chat-box .chat-line').eq(0).data('timestamp');
+                  var lenMessage = $('#chat-box .chat-line').length;
+                  var messagePosted = $('#chat-box .chat-line').eq(lenMessage-1).data('timestamp');
 
                   if((Date.now() - messagePosted) / 1000 >= Chat.vars.displayTime) {
-                      $('#chat-box .chat-line').eq(0).addClass('on_out').fadeOut(function() {
+                      $('#chat-box .chat-line').eq(lenMessage-1).addClass('on_out').fadeOut(function() {
                           $(this).remove();
                       });
                   }
