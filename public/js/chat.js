@@ -50,6 +50,10 @@ System = {
             console.log('bili API is ready');
             $('#bili-status').addClass('ready');
             break;
+          case 'error':
+            console.log('bili API error');
+            $('#bili-status').removeClass('ready');
+            break;
         }
         break;
       case 'youtube':

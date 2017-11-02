@@ -1,6 +1,6 @@
 {
   "name": "live-stream-chat-retriever",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Retrieve live streams chat messages from different sources (Twitch, YouTube Gaming, etc...)",
   "author": "kliner, Noxalus",
   "dependencies": {
