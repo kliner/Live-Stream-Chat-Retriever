@@ -18,10 +18,10 @@ function initialize(config) {
       ch.assertQueue(q, {durable: false});
       console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
       ch.consume(q, function(msg) {
-        console.log(" [x] Received %s", msg.content.toString());
         _lastHeartBeat = new Date().getTime();
-        if (!_isReady) { ready() }
         if (msg.content == 'heartBeat') { return; }
+        console.log(" [x] Received %s", msg.content.toString());
+        if (!_isReady) { ready() }
         var ct = JSON.parse(msg.content);
           
         var chatMessage = {
