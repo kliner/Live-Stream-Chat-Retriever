@@ -7,6 +7,7 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 var winston = require('winston');
 var ipfilter = require('express-ipfilter');
+const bodyParser = require("body-parser");
 
 // Setup the logger
 winston.addColors({
@@ -36,7 +37,6 @@ var twitchApi = require('./api/twitch-api');
 var hitboxApi = require('./api/hitbox-api');
 var beamApi = require('./api/beam-api');
 var dailymotionApi = require('./api/dailymotion-api');
-var biliApi = require('./api/bili-api');
 
 var chatMessageId = 0;
 var chatMessages = [];
@@ -60,15 +60,16 @@ function run(config) {
     if (config.live_data.dailymotion.enabled)
         dailymotionApi.initialize(config);
 
-    if (config.live_data.bilibili.enabled)
-        biliApi.initialize(config);
-
     var app = express();
     app.use(express.static('public'));
-    app.use(ipfilter(config.whitelisted_ips, {
-        mode: 'allow',
-        logF: winston.info
+    //app.use(ipfilter(config.whitelisted_ips, {
+    //    mode: 'allow',
+    //    logF: winston.info
+    //}));
+    app.use(bodyParser.urlencoded({
+        extended: true
     }));
+
 
     var server = http.Server(app);
     var io = socketio(server);
@@ -89,6 +90,27 @@ function run(config) {
         res.sendFile(path.join(__dirname, '/public/chat.html'));
     });
 
+    app.get('/msg', function(req, res) {
+      res.send("<form method='post'><input name='s' value='bili' type='hidden'/><input name='user' value='a' type='hidden'/><input name='text'/><input type='submit'/></form>");
+    });
+
+    app.post('/msg', function(req, res) {
+        console.log(" [x] Received request %s", req.body.text);
+
+        var chatMessage = {
+            type: 'chat',
+            author: req.body['user'],
+            message: req.body['text'],
+            source: req.body['s'],
+            date: new Date().getTime()
+        };
+
+        newMessages.push(chatMessage);
+      res.send("<form method='post'><input name='s' value='bili' type='hidden'/><input name='user' value='a' type='hidden'/><input name='text'/><input type='submit'/></form>");
+      //res.send("OK");
+
+    });
+
 
     if (config.live_data.youtube.enabled && config.live_data.youtube.redirect_url) {
         app.get(config.live_data.youtube.redirect_url, function(req, res){
@@ -105,12 +127,6 @@ function run(config) {
     var newMessages = [];
     async.forever(
         function(next) {
-
-            if (config.live_data.bilibili.enabled) {
-                biliApi.getNewMessages().forEach(function(elt) { 
-                    newMessages.push(elt); 
-                });
-            }
 
             if (config.live_data.youtube.enabled) {
                 youtubeApi.getNewMessages().forEach(function(elt) { 
