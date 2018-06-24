@@ -1,3 +1,47 @@
+@media only screen and (max-width: 600px) {
+    #chat-box {
+    }
+
+    .chat-line .source_icon img {
+        margin: 4px 4px 4px 4px;
+        width: 24px;
+    }
+
+
+    .chat-line {
+        font-size: 40px;
+        line-height:48px;
+    }
+
+    .chat-line .message {
+        line-height:48px;
+    }
+    
+    .chat-line .author{
+        line-height:48px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #chat-box {
+        font-size: 24px;
+    }
+
+    .chat-line {
+        font-size: 24px;
+        line-height:27px;
+    }
+
+    .chat-line .message {
+        line-height:27px;
+    }
+    
+    .chat-line .author{
+        line-height:27px;
+    }
+} 
+
+
 body {
     overflow: scroll;
     margin: 5px;
@@ -6,7 +50,6 @@ body {
 #chat-box {
     background-color: transparent;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 13px;
     font-style: normal;
     font-variant: normal;
     font-weight: normal;
@@ -22,8 +65,6 @@ body {
     margin-right: 0;
     padding-top: 2px;
     padding-bottom: 3px;
-    font-size:18px;
-    line-height:21px;
     background-color:rgba(127,127,127,0.00);
 }
 
@@ -31,7 +72,6 @@ body {
     word-wrap: break-word;
     color:#222;
     font-weight:700;
-    line-height:21px;
     /* text-shadow:0 0 1px #666,1px 1px 0 #000; */
 }
 
@@ -39,7 +79,6 @@ body {
     /* text-transform:capitalize; */
     color:#000;
     font-weight:700;
-    line-height:21px;
     /* text-shadow:0 0 1px #666,1px 1px 0 #000; */
     display: inline-block;
 }
